@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/database
+    username: newuser
+    password: 1234
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5
+      minimum-idle: 2
+  jpa:
+    open-in-view: false
+  servlet: 
+    multipart:
+      max-file-size: 5MB
+  main:
+    allow-bean-definition-overriding: true 
+logging:
+  level:
+    org:  
+      hibernate: info 
+      
