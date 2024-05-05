@@ -23,6 +23,7 @@ class StudentTest {
 	@Test
 	void testToPersistStudent() {
 		Student studentInput = Instancio.of(Student.class).ignore(field(Student::getId))
+				.set(field(Student::getPassportNumber), "12341234")
 				.ignore(field(Student::getGroup)).ignore(field(Student::getCourses)).create();
 		assertNull(studentInput.getId());
 		em.persist(studentInput);

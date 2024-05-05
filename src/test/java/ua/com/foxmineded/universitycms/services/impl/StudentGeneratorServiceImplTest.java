@@ -41,7 +41,7 @@ class StudentGeneratorServiceImplTest {
 
 	@Test
 	void testGenerateWithGroups_AskGenerateTestData_AllDataShouldBeValid() {
-		int expectedStudentAmount = 801;
+		int expectedStudentAmount = 800;
 		List<Group> groups = groupGeneratorService.generate();
 		assertDoesNotThrow(() -> {
 			studentGeneratorService.generateWithGroups(groups);

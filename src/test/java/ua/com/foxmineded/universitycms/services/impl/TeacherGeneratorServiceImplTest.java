@@ -31,7 +31,7 @@ class TeacherGeneratorServiceImplTest {
 
 	@Test
 	void testGenerate_AskToGenerateTestData_TestDataShouldBeValid() {
-		int expectedTeacherAmount = 41;
+		int expectedTeacherAmount = 40;
 		assertDoesNotThrow(() -> {
 			teacherGeneratorService.generate();
 		});

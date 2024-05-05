@@ -29,37 +29,37 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
 					<li sec:authorize="hasRole('TEACHER') or hasRole('STUDENT')" class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/timetable">Timetable</a>
+						<a class="nav-link active" id="timetableRef" aria-current="page" href="/timetable">Timetable</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/students">Students</a>
+						<a class="nav-link active" id="studentsRef" aria-current="page" href="/students">Students</a>
 					</li>
 					<li sec:authorize="hasRole('ADMINISTRATOR')" class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/administrators">Administrators</a>
+						<a class="nav-link active" id="administratorsRef" aria-current="page" href="/administrators">Administrators</a>
 					</li>
 					<li sec:authorize="hasRole('ADMINISTRATOR') or hasRole('TEACHER')" class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/teachers">Teachers</a>
+						<a class="nav-link active" id="teachersRef" aria-current="page" href="/teachers">Teachers</a>
 					</li>
 					
 					<li sec:authorize="hasRole('ADMINISTRATOR') or hasRole('TEACHER')" class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/courses">Courses</a>
+						<a class="nav-link active" id="coursesRef" aria-current="page" href="/courses">Courses</a>
 					</li>
 					<li sec:authorize="hasRole('STUDENT')" class="nav-item">
-						<a class="nav-link active" aria-current="page" th:href="@{/courses/{studentId}/findAllByStudentId (studentId=${dto.id})}">Courses</a>
+						<a class="nav-link active" id="coursesForStudentRef" aria-current="page" th:href="@{/courses/{studentId}/findAllByStudentId (studentId=${dto.id})}">Courses</a>
 					</li>
 					
 					<li sec:authorize="hasRole('ADMINISTRATOR') or hasRole('TEACHER')" class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/groups">Groups</a>
+						<a class="nav-link active" id="groupsRef" aria-current="page" href="/groups">Groups</a>
 					</li>
 					<li sec:authorize="hasRole('STUDENT')" class="nav-item">
-						<a class="nav-link active" aria-current="page" th:href="@{/groups/{studentId}/findByStudentId (studentId=${dto.id})}">Groups</a>
+						<a class="nav-link active" id="groupsForStudentRef" aria-current="page" th:href="@{/groups/{studentId}/findByStudentId (studentId=${dto.id})}">Groups</a>
 					</li>
 					
 					<li sec:authorize="hasRole('ADMINISTRATOR') or hasRole('TEACHER')" class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/lessons">Lessons</a>
+						<a class="nav-link active" id="lessonsRef" aria-current="page" href="/lessons">Lessons</a>
 					</li>
 					<li sec:authorize="hasRole('ADMINISTRATOR') or hasRole('TEACHER')" class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/rooms">Rooms</a>
+						<a class="nav-link active" id="roomsRef" aria-current="page" href="/rooms">Rooms</a>
 					</li>
 				</ul>
 			</div>
