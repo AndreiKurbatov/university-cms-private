@@ -31,7 +31,7 @@ public class TestDataGenerator implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-/*
+
 		log.info("The test data generation process was started. It may take some time...");
 		concurrentDataImporterService.importConcurrently(() -> administratorGeneratorService.generate(),
 				() -> groupGeneratorService.generate(), () -> teacherGeneratorService.generate(),
@@ -56,6 +56,6 @@ public class TestDataGenerator implements ApplicationRunner {
 		log.info("%d lessons were generated".formatted(lessonGeneratorService.countAll()));
 
 		log.info("The data generation process is completed");
-*/
+
 	}
 }
