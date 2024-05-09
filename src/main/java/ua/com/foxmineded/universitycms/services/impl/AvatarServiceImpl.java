@@ -47,7 +47,7 @@ public class AvatarServiceImpl implements AvatarService {
 		});
 	}
 
-	@Scheduled(cron = "0 0/30 * * * *")
+	@Scheduled(cron = "0 0/40 * * * *")
 	@Override
 	public void removeOrphanedAdministratorPhoto() {
 		List<UUID> existingUuids = administratorRepository.findAll().stream().map(AbstractPerson::getPhotoUuid)

@@ -1,52 +1,62 @@
 package ua.com.foxmineded.universitycms.utils.impl;
 
-import static java.util.stream.Collectors.toCollection;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
-import lombok.Cleanup;
 import ua.com.foxmineded.universitycms.utils.CoursesNamesReader;
 
 @Component
 public class CoursesNamesReaderImpl implements CoursesNamesReader {
-	private static final Path COMPUTER_SCIENCE_COURSES_PATH = Paths.get("src", "main", "resources", "txt",
-			"computer-science-courses.txt");
-	private static final Path ART_COURSES_PATH = Paths.get("src", "main", "resources", "txt", "art-courses.txt");
-	private static final Path ECONOMIC_COURSES_PATH = Paths.get("src", "main", "resources", "txt",
-			"economic-courses.txt");
-	private static final Path MEDICINE_COURSES_PATH = Paths.get("src", "main", "resources", "txt",
-			"medicine-courses.txt");
+    @Value("classpath:txt/computer-science-courses.txt")
+    private Resource resourceComputerScienceCourses;
+    @Value("classpath:txt/art-courses.txt")
+    private Resource resourceArtCourses;
+    @Value("classpath:txt/economic-courses.txt")
+    private Resource resourceEconomicCourses;
+    @Value("classpath:txt/medicine-courses.txt")
+    private Resource resourceMedicineCourses;
 
-	@Override
-	public List<String> readEconomicCourses() throws IOException {
-		@Cleanup
-		Stream<String> stream = Files.lines(ECONOMIC_COURSES_PATH);
-		return stream.collect(toCollection(ArrayList::new));
-	}
 
-	@Override
-	public List<String> readComputerScienceCourses() throws IOException {
-		@Cleanup
-		Stream<String> stream = Files.lines(COMPUTER_SCIENCE_COURSES_PATH);
-		return stream.collect(toCollection(ArrayList::new));
-	}
+    @Override
+    public List<String> readEconomicCourses() throws IOException {
+        try (InputStream inputStream = resourceEconomicCourses.getInputStream();
+             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            List<String> lines = reader.lines().collect(Collectors.toList());
+            return lines;
+        }
+    }
 
-	@Override
-	public List<String> readMedicineCourses() throws IOException {
-		@Cleanup
-		Stream<String> stream = Files.lines(MEDICINE_COURSES_PATH);
-		return stream.collect(toCollection(ArrayList::new));
-	}
+    @Override
+    public List<String> readComputerScienceCourses() throws IOException {
+        try (InputStream inputStream = resourceComputerScienceCourses.getInputStream();
+             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            List<String> lines = reader.lines().collect(Collectors.toList());
+            return lines;
+        }
+    }
 
-	@Override
-	public List<String> readArtCourses() throws IOException {
-		@Cleanup
-		Stream<String> stream = Files.lines(ART_COURSES_PATH);
-		return stream.collect(toCollection(ArrayList::new));
-	}
+    @Override
+    public List<String> readMedicineCourses() throws IOException {
+        try (InputStream inputStream = resourceMedicineCourses.getInputStream();
+             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            List<String> lines = reader.lines().collect(Collectors.toList());
+            return lines;
+        }
+    }
+
+    @Override
+    public List<String> readArtCourses() throws IOException {
+        try (InputStream inputStream = resourceArtCourses.getInputStream();
+             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            List<String> lines = reader.lines().collect(Collectors.toList());
+            return lines;
+        }
+    }
 }
