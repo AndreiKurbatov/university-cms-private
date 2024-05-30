@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/database
+    url: jdbc:postgresql://my-postgresql-server-1234.postgres.database.azure.com:5432/database
     username: newuser
-    password: 1234
+    password: 89056528447Aa
     hikari:
       connection-timeout: 20000
       maximum-pool-size: 5
